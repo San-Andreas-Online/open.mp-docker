@@ -72,6 +72,29 @@
         }
       },
       {
+        "label": "build open.mp-v1.5.8.3079",
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/open.mp-v1.5.8.3079"
+        },
+        "windows": {
+          "command": "wsl sh -c 'docker build . -t open.mp:v1.5.8.3079 && docker tag open.mp:v1.5.8.3079 michaelace/open.mp:v1.5.8.3079'",
+        },
+        "linux": {
+          "command": "docker build . -t open.mp:v1.5.8.3079 && docker tag open.mp:v1.5.8.3079 michaelace/open.mp:v1.5.8.3079",
+        },
+        "command": "",
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        },
+        "isBackground": false,
+        "presentation": {
+          "reveal": "always",
+          "panel": "dedicated"
+        }
+      },
+      {
         "label": "push open.mp-latest",
         "type": "shell",
         "options": {
@@ -120,6 +143,25 @@
         },
         "linux": {
           "command": "docker push michaelace/open.mp:v1.4.0.2779",
+        },
+        "command": "",
+        "isBackground": false,
+        "presentation": {
+          "reveal": "always",
+          "panel": "dedicated"
+        }
+      },
+      {
+        "label": "push open.mp-v1.5.8.3079",
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/open.mp-v1.5.8.3079"
+        },
+        "windows": {
+          "command": "wsl docker push michaelace/open.mp:v1.5.8.3079",
+        },
+        "linux": {
+          "command": "docker push michaelace/open.mp:v1.5.8.3079",
         },
         "command": "",
         "isBackground": false,
