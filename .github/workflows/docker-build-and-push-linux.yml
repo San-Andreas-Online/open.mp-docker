@@ -12,8 +12,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - folder: open.mp-latest-linux
-            tag: latest-linux
+          - folder: open.mp-latest
+            tag: latest
             platforms: linux/386,linux/amd64
     steps:
       - name: Checkout

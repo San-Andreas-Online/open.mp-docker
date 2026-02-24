@@ -3,17 +3,17 @@
     "tasks":
     [
       {
-        "label": "build open.mp-latest-linux",
+        "label": "build open.mp-latest",
         "type": "shell",
         "windows": {
-          "command": "wsl sh -c 'docker build . -t open.mp:latest-linux && docker tag open.mp:latest-linux michaelace/open.mp:latest-linux'",
+          "command": "wsl sh -c 'docker build . -t open.mp:latest && docker tag open.mp:latest michaelace/open.mp:latest'",
         },
         "linux": {
-          "command": "docker build . -t open.mp:latest-linux && docker tag open.mp:latest-linux michaelace/open.mp:latest-linux",
+          "command": "docker build . -t open.mp:latest && docker tag open.mp:latest michaelace/open.mp:latest",
         },
         "command": "",
         "options": {
-          "cwd": "${workspaceFolder}/open.mp-latest-linux"
+          "cwd": "${workspaceFolder}/open.mp-latest"
         },
         "group": {
           "kind": "build",
@@ -26,16 +26,16 @@
         }
       },
       {
-        "label": "push open.mp-latest-linux",
+        "label": "push open.mp-latest",
         "type": "shell",
         "options": {
-          "cwd": "${workspaceFolder}/open.mp-latest-linux"
+          "cwd": "${workspaceFolder}/open.mp-latest"
         },
         "windows": {
-          "command": "wsl docker push michaelace/open.mp:latest-linux",
+          "command": "wsl docker push michaelace/open.mp:latest",
         },
         "linux": {
-          "command": "docker push michaelace/open.mp:latest-linux",
+          "command": "docker push michaelace/open.mp:latest",
         },
         "command": "",
         "isBackground": false,
