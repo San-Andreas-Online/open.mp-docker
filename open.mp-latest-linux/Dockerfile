@@ -1,20 +1,30 @@
 FROM debian:stable-slim
 
-# Create the server folder
+# Automatically provided build argument for the target architecture
+ARG TARGETARCH
+
 RUN mkdir -p /server
-# Work in the server folder
 WORKDIR /server
 
-# Install glibc compatibility layer
-RUN dpkg --add-architecture i386 && \
-	apt-get clean && \
- 	apt-get update && \
- 	apt-get upgrade -y && \
- 	apt-get install libstdc++6:i386 \
-	# Install utilities for downloading files
-	curl \
-	wget \
-	tar -y
+# If we're building for AMD64, we need to install the 32-bit compatibility libraries
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+        dpkg --add-architecture i386 && \
+        apt-get update && \
+        apt-get upgrade -y && \
+        apt-get install -y \
+          libstdc++6:i386 \
+          curl \
+          wget \
+          tar; \
+    else \
+        apt-get update && \
+        apt-get upgrade -y && \
+        apt-get install -y \
+          libstdc++6 \
+          curl \
+          wget \
+          tar; \
+    fi
 
 # Download the latest open.mp server files
 RUN curl -s https://api.github.com/repos/openmultiplayer/open.mp/releases/latest \
