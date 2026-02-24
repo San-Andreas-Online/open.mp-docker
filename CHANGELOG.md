@@ -27,6 +27,9 @@ Types of changes:
 
 - [Changelog](#changelog)
   - [Table of Contents](#table-of-contents)
+  - [\[3.0.0\] - 2026-02-24](#300---2026-02-24)
+    - [Removed in 3.0.0](#removed-in-300)
+    - [Added in 3.0.0](#added-in-300)
   - [\[2.2.0\] - 2025-01-22](#220---2025-01-22)
     - [Added in 2.2.0](#added-in-220)
   - [\[2.1.1\] - 2024-11-07](#211---2024-11-07)
@@ -35,6 +38,16 @@ Types of changes:
     - [Added in 2.0.0](#added-in-200)
   - [\[1.0.0\] - 2024-11-07](#100---2024-11-07)
     - [Added in 1.0.0](#added-in-100)
+
+## [3.0.0] - 2026-02-24
+
+### Removed in 3.0.0
+
+- Removed versioned images & open.mp server files, only the latest image is now available (server files are downloaded at build time)
+
+### Added in 3.0.0
+
+- Added support for x86 architecture on Linux (linux-386)
 
 ## [2.2.0] - 2025-01-22
 
