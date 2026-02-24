@@ -8,12 +8,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy: &openmp_matrix
+    strategy: &build_strategy
       fail-fast: false
       matrix:
         include:
-          - folder: open.mp-latest-linux-386
-            tag: linux-386
+          - folder: open.mp-latest-linux-amd64
+            tag: linux-amd64
+            platforms: linux/amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,7 +31,7 @@ jobs:
           context: ${{ matrix.folder }}
           file: ${{ matrix.folder }}/Dockerfile
           push: false
-          platforms: linux/386
+          platforms: ${{ matrix.platforms }}
           tags: michaelace/open.mp:${{ matrix.tag }}
           outputs: type=docker,dest=open.mp-docker-${{ matrix.tag }}.tar
           build-args: |
@@ -46,7 +47,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     # Reusing the same matrix as the build job to ensure we push the correct tags
-    strategy: *openmp_matrix
+    strategy: *build_strategy
     steps:
       - name: Download built Linux image artifact
         uses: actions/download-artifact@v4
