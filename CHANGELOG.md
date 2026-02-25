@@ -27,6 +27,8 @@ Types of changes:
 
 - [Changelog](#changelog)
   - [Table of Contents](#table-of-contents)
+  - [\[4.0.4\] - 2026-02-25](#404---2026-02-25)
+    - [Fixed in 4.0.4](#fixed-in-404)
   - [\[4.0.3\] - 2026-02-25](#403---2026-02-25)
     - [Added in 4.0.3](#added-in-403)
   - [\[4.0.2\] - 2026-02-25](#402---2026-02-25)
@@ -49,6 +51,12 @@ Types of changes:
     - [Added in 2.0.0](#added-in-200)
   - [\[1.0.0\] - 2024-11-07](#100---2024-11-07)
     - [Added in 1.0.0](#added-in-100)
+
+## [4.0.4] - 2026-02-25
+
+### Fixed in 4.0.4
+
+- Fixed config arguments not being passed properly to the command line when launching the server
 
 ## [4.0.3] - 2026-02-25
 

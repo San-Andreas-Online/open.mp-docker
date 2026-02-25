@@ -74,13 +74,19 @@ else
         if [[ "$arg" == *password=* ]]; then
             # Extract the key part and mask the value
             key="${arg%%=*}"
-            SAFE_ARGS+=("$key=***")
+            SAFE_ARGS+=("-c" "$key=***")
         else
-            SAFE_ARGS+=("$arg")
+            SAFE_ARGS+=("-c" "$arg")
         fi
     done
-    echo -e "\nLaunching open.mp server with the following environment variables as CLI arguments: ${SAFE_ARGS[*]}"
-    ./omp-server -c "${OMP_CLI_ARGS[@]}"
+    echo -e "\nLaunching open.mp server with the following environment variables as CLI arguments (please note values with spaces or quotes do not work): ${SAFE_ARGS[*]}"
+    
+    # Build the actual command arguments with -c before each argument
+    ACTUAL_ARGS=()
+    for arg in "${OMP_CLI_ARGS[@]}"; do
+        ACTUAL_ARGS+=("-c" "$arg")
+    done
+    ./omp-server "${ACTUAL_ARGS[@]}"
 fi
 
 # Save the exit code of whatever we ran
