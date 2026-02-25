@@ -1,23 +1,53 @@
 FROM debian:stable-slim
 
-# Create the server folder
+# Automatically provided build argument for the target architecture
+ARG TARGETARCH
+
 RUN mkdir -p /server
-# Work in the server folder
 WORKDIR /server
 
-# Install glibc compatibility layer
-RUN dpkg --add-architecture i386 && \
-	apt-get clean && \
- 	apt-get update && \
- 	apt-get upgrade -y && \
- 	apt-get install libstdc++6:i386 -y
+# If we're building for AMD64, we need to install the 32-bit compatibility libraries
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+        dpkg --add-architecture i386 && \
+        apt-get update && \
+        apt-get upgrade -y && \
+        apt-get install -y \
+          libstdc++6:i386 \
+          curl \
+          wget \
+          tar; \
+    else \
+        apt-get update && \
+        apt-get upgrade -y && \
+        apt-get install -y \
+          libstdc++6 \
+          curl \
+          wget \
+          tar; \
+    fi
 
-# Create required directories
-RUN mkdir -p components filterscripts gamemodes models npcmodes npcmodes/recordings plugins scriptfiles
+# Download the latest open.mp server files
+RUN curl -s https://api.github.com/repos/openmultiplayer/open.mp/releases/270574539 \
+	# Find the download URL for the latest release
+    | grep "browser_download_url.*open.mp-linux-x86.tar.gz" \
+	# Extract the URL
+    | cut -d : -f 2,3 \
+	# Remove the quotes
+    | tr -d \" \
+	# Download the file
+    | wget -qi - && \
+	# Extract the file
+    tar -xzf open.mp-linux-x86.tar.gz && \
+	# Remove the archive
+    rm open.mp-linux-x86.tar.gz && \
+	# Move the server files to the root folder
+	mv Server/* . && \
+	# Remove the empty folder
+	rmdir Server
 
-# Copy the binaries and required files to the container
-COPY server/ /server/
-COPY entrypoint.sh /entrypoint.sh
+# Copy required files to the container
+COPY ./common/server_files/ /server/
+COPY ./common/entrypoint.sh /entrypoint.sh
 
 # Give execution rights on binaries
 RUN chmod +x omp-server
