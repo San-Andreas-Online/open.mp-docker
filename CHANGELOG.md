@@ -27,6 +27,8 @@ Types of changes:
 
 - [Changelog](#changelog)
   - [Table of Contents](#table-of-contents)
+  - [\[4.0.1\] - 2026-02-26](#401---2026-02-26)
+    - [Added in 4.0.1](#added-in-401)
   - [\[4.0.0\] - 2026-02-25](#400---2026-02-25)
     - [Added in 4.0.0](#added-in-400)
     - [Changed in 4.0.0](#changed-in-400)
@@ -43,6 +45,12 @@ Types of changes:
     - [Added in 2.0.0](#added-in-200)
   - [\[1.0.0\] - 2024-11-07](#100---2024-11-07)
     - [Added in 1.0.0](#added-in-100)
+
+## [4.0.1] - 2026-02-26
+
+### Added in 4.0.1
+
+- Added libatomic1 and libatomic1:i386 as dependency for the open.mp server
 
 ## [4.0.0] - 2026-02-25
 

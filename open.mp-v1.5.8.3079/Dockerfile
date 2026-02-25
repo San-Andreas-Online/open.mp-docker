@@ -13,6 +13,7 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
         apt-get upgrade -y && \
         apt-get install -y \
           libstdc++6:i386 \
+          libatomic1:i386 \
           curl \
           wget \
           tar; \
@@ -21,6 +22,7 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
         apt-get upgrade -y && \
         apt-get install -y \
           libstdc++6 \
+          libatomic1 \
           curl \
           wget \
           tar; \
