@@ -69,6 +69,7 @@ if [ $# -gt 0 ]; then
     echo -e "\nAlternative launching method: $@"
     sh -c "$@"
 else
+    echo -e "\nLaunching open.mp server with the following environment variables as CLI arguments: ${OMP_CLI_ARGS[*]}"
     ./omp-server -c "${OMP_CLI_ARGS[@]}"
 fi
 

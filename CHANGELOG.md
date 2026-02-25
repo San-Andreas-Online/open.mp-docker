@@ -27,7 +27,9 @@ Types of changes:
 
 - [Changelog](#changelog)
   - [Table of Contents](#table-of-contents)
-  - [\[4.0.1\] - 2026-02-26](#401---2026-02-26)
+  - [\[4.0.2\] - 2026-02-25](#402---2026-02-25)
+    - [Added in 4.0.2](#added-in-402)
+  - [\[4.0.1\] - 2026-02-25](#401---2026-02-25)
     - [Added in 4.0.1](#added-in-401)
   - [\[4.0.0\] - 2026-02-25](#400---2026-02-25)
     - [Added in 4.0.0](#added-in-400)
@@ -46,7 +48,13 @@ Types of changes:
   - [\[1.0.0\] - 2024-11-07](#100---2024-11-07)
     - [Added in 1.0.0](#added-in-100)
 
-## [4.0.1] - 2026-02-26
+## [4.0.2] - 2026-02-25
+
+### Added in 4.0.2
+
+- Added log to announce server launching and arguments used, for better visibility in the logs
+
+## [4.0.1] - 2026-02-25
 
 ### Added in 4.0.1
 
