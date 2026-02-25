@@ -69,7 +69,17 @@ if [ $# -gt 0 ]; then
     echo -e "\nAlternative launching method: $@"
     sh -c "$@"
 else
-    echo -e "\nLaunching open.mp server with the following environment variables as CLI arguments: ${OMP_CLI_ARGS[*]}"
+    SAFE_ARGS=()
+    for arg in "${OMP_CLI_ARGS[@]}"; do
+        if [[ "$arg" == *password=* ]]; then
+            # Extract the key part and mask the value
+            key="${arg%%=*}"
+            SAFE_ARGS+=("$key=***")
+        else
+            SAFE_ARGS+=("$arg")
+        fi
+    done
+    echo -e "\nLaunching open.mp server with the following environment variables as CLI arguments: ${SAFE_ARGS[*]}"
     ./omp-server -c "${OMP_CLI_ARGS[@]}"
 fi
 
