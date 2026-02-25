@@ -27,7 +27,7 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
     fi
 
 # Download the latest open.mp server files
-RUN curl -s https://api.github.com/repos/openmultiplayer/open.mp/releases/latest \
+RUN curl -s https://api.github.com/repos/openmultiplayer/open.mp/releases/270574539 \
 	# Find the download URL for the latest release
     | grep "browser_download_url.*open.mp-linux-x86.tar.gz" \
 	# Extract the URL

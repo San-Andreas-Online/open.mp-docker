@@ -15,6 +15,9 @@ jobs:
           - folder: open.mp-latest
             tag: latest
             platforms: linux/386,linux/amd64
+          - folder: open.mp-1.5.8.3079
+            tag: 1.5.8.3079
+            platforms: linux/386,linux/amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,7 +37,7 @@ jobs:
       - name: Build and push multi-arch image
         uses: docker/build-push-action@v5
         with:
-          context: ${{ matrix.folder }}
+          context: .
           file: ${{ matrix.folder }}/Dockerfile
           platforms: ${{ matrix.platforms }}
           push: true
