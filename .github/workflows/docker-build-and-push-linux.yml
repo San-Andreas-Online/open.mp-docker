@@ -15,8 +15,8 @@ jobs:
           - folder: open.mp-latest
             tag: latest
             platforms: linux/386,linux/amd64
-          - folder: open.mp-1.5.8.3079
-            tag: 1.5.8.3079
+          - folder: open.mp-v1.5.8.3079
+            tag: v1.5.8.3079
             platforms: linux/386,linux/amd64
     steps:
       - name: Checkout
