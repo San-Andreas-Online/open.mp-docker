@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build open.mp-latest",
+			"type": "shell",
+			"windows": {
+				"command": "wsl sh -c 'docker build -f ./open.mp-latest/Dockerfile . -t open.mp:latest && docker tag open.mp:latest michaelace/open.mp:latest'",
+			},
+			"linux": {
+				"command": "docker build -f ./open.mp-latest/Dockerfile . -t open.mp:latest && docker tag open.mp:latest michaelace/open.mp:latest",
+			},
+			"command": "",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"isBackground": false,
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
+			}
+		}
+	]
+}
