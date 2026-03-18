@@ -7,7 +7,6 @@ RUN mkdir -p /server
 WORKDIR /server
 
 # If we're building for AMD64, we need to install the 32-bit compatibility libraries
-# If we're building for AMD64, we need to install the 32-bit compatibility libraries
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
         dpkg --add-architecture i386 && \
         apt-get update && \
